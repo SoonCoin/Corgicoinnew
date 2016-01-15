@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="qss_icons">
+    <file>corgicoin.png</file>
     <file>rc/up_arrow_disabled.png</file>
     <file>rc/Hmovetoolbar.png</file>
     <file>rc/stylesheet-branch-end.png</file>
@@ -26,7 +27,6 @@
     <file>rc/undock.png</file>
   </qresource>
   <qresource prefix="qdarkstyle">
-      <file>style.qss</file>
+    <file>style.qss</file>
   </qresource>
 </RCC>
-
