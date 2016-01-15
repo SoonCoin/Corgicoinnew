@@ -238,12 +238,12 @@
          <widget class="QLabel" name="inwalletlogo">
           <property name="minimumSize">
            <size>
-            <width>0</width>
-            <height>16</height>
+            <width>256</width>
+            <height>256</height>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">image: url(:/qss_icons/corgicoin.png);</string>
+           <string notr="true">image: url(:/qdarkstyle/corgicoin.png);</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>

@@ -28,5 +28,6 @@
   </qresource>
   <qresource prefix="qdarkstyle">
     <file>style.qss</file>
+    <file>corgicoin.png</file>
   </qresource>
 </RCC>

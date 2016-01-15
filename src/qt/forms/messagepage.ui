@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>793</width>
-    <height>375</height>
+    <height>424</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,6 +34,9 @@
      </property>
      <property name="toolTip">
       <string>Click on a message to view it</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="tabKeyNavigation">
       <bool>false</bool>
@@ -121,7 +124,11 @@
          </layout>
         </item>
         <item>
-         <widget class="QListView" name="listConversation"/>
+         <widget class="QListView" name="listConversation">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(1, 1, 1);</string>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_3"/>
