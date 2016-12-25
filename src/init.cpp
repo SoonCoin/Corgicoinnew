@@ -84,9 +84,9 @@ void Shutdown(void* parg)
     if (fFirstThread)
     {
         fShutdown = true;
-        
+
         SecureMsgShutdown();
-        
+
         nTransactionsUpdated++;
 //        CTxDB().Close();
         bitdb.Flush(false);
@@ -460,7 +460,7 @@ bool AppInit2()
         fDebugSmsg = GetBoolArg("-debugsmsg");
     }
     fNoSmsg = GetBoolArg("-nosmsg");
-    
+
     bitdb.SetDetach(GetBoolArg("-detachdb", false));
 
 #if !defined(WIN32) && !defined(QT_GUI)
@@ -897,14 +897,13 @@ bool AppInit2()
 
     printf("Loaded %i addresses from peers.dat  %"PRId64"ms\n",
            addrman.size(), GetTimeMillis() - nStart);
-    
-    
+
     // ********************************************************* Step 10.1: startup secure messaging
-    
+
     SecureMsgStart(fNoSmsg, GetBoolArg("-smsgscanchain"));
-    
+
     // ********************************************************* Step 11: start node
-    
+
     if (!CheckDiskSpace())
         return false;
 

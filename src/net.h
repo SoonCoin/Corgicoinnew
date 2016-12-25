@@ -207,16 +207,16 @@ public:
         nPeerId         = 0;
         fEnabled        = false;
     };
-    
+
     ~SecMsgNode() {};
-    
+
     int64_t                     lastSeen;
     int64_t                     lastMatched;
     int64_t                     ignoreUntil;
     uint32_t                    nWakeCounter;
     uint32_t                    nPeerId;
     bool                        fEnabled;
-    
+
 };
 
 /** Information about a peer */
@@ -238,10 +238,10 @@ public:
 
     int64_t nLastSend;
     int64_t nLastRecv;
-    
+
     uint64_t nSendBytes;
     uint64_t nRecvBytes;
-    
+
     int64_t nLastSendEmpty;
     int64_t nTimeConnected;
     CAddress addr;
@@ -352,7 +352,7 @@ public:
 private:
     CNode(const CNode&);
     void operator=(const CNode&);
-    
+
     // Network usage totals
     static CCriticalSection cs_totalBytesRecv;
     static CCriticalSection cs_totalBytesSent;
@@ -371,7 +371,7 @@ public:
     unsigned int GetTotalRecvSize()
     {
         unsigned int total = 0;
-        BOOST_FOREACH(const CNetMessage &msg, vRecvMsg) 
+        BOOST_FOREACH(const CNetMessage &msg, vRecvMsg)
             total += msg.vRecv.size() + 24;
         return total;
     }
@@ -745,7 +745,7 @@ public:
     static bool IsBanned(CNetAddr ip);
     bool Misbehaving(int howmuch); // 1 == a little, 100 == a lot
     void copyStats(CNodeStats &stats);
-    
+
     // Network stats
     static void RecordBytesRecv(uint64_t bytes);
     static void RecordBytesSent(uint64_t bytes);

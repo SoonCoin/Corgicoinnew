@@ -61,12 +61,13 @@ contains(RELEASE, 1) {
 }
 
 !win32 {
-# for extra security against potential buffer overflows: enable GCCs Stack Smashing Protection
-QMAKE_CXXFLAGS *= -fstack-protector-all --param ssp-buffer-size=1
-QMAKE_LFLAGS *= -fstack-protector-all --param ssp-buffer-size=1
-# We need to exclude this for Windows cross compile with MinGW 4.2.x, as it will result in a non-working executable!
-# This can be enabled for Windows, when we switch to MinGW >= 4.4.x.
+    # for extra security against potential buffer overflows: enable GCCs Stack Smashing Protection
+    QMAKE_CXXFLAGS *= -fstack-protector-all --param ssp-buffer-size=1
+    QMAKE_LFLAGS *= -fstack-protector-all --param ssp-buffer-size=1
+    # We need to exclude this for Windows cross compile with MinGW 4.2.x, as it will result in a non-working executable!
+    # This can be enabled for Windows, when we switch to MinGW >= 4.4.x.
 }
+
 # for extra security on Windows: enable ASLR and DEP via GCC linker flags
 win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat
 win32:QMAKE_LFLAGS += -static-libgcc -static-libstdc++
@@ -152,7 +153,6 @@ contains(USE_O3, 1) {
 
 *-g++-32 {
     message("32 platform, adding -msse2 flag")
-
     QMAKE_CXXFLAGS += -msse2
     QMAKE_CFLAGS += -msse2
 }
@@ -326,7 +326,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/scrypt-x86_64.S \
     src/scrypt.cpp \
     src/pbkdf2.cpp \
-    src/stealth.cpp 
+    src/stealth.cpp
 
 RESOURCES += \
     src/qt/bitcoin.qrc \
@@ -351,9 +351,9 @@ FORMS += \
     src/qt/plugins/mrichtexteditor/mrichtextedit.ui
 
 contains(USE_QRCODE, 1) {
-HEADERS += src/qt/qrcodedialog.h
-SOURCES += src/qt/qrcodedialog.cpp
-FORMS += src/qt/forms/qrcodedialog.ui
+    HEADERS += src/qt/qrcodedialog.h
+    SOURCES += src/qt/qrcodedialog.cpp
+    FORMS += src/qt/forms/qrcodedialog.ui
 }
 
 CODECFORTR = UTF-8
@@ -366,6 +366,7 @@ isEmpty(QMAKE_LRELEASE) {
     win32:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\\lrelease.exe
     else:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
 }
+
 isEmpty(QM_DIR):QM_DIR = $$PWD/src/qt/locale
 # automatically build translations, so they can be included in resource file
 TSQM.name = lrelease ${QMAKE_FILE_IN}

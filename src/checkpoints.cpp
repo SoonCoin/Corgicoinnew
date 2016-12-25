@@ -41,16 +41,16 @@ namespace Checkpoints
         (64000, uint256("0x489f8914c07bfa3ff5478c097a4d0444417c293fde698faac50d0acd42aee5eb"))
         (68000, uint256("0x000000585eb202fa172eba417c0c07d0c43cd96ff5986ff445a8c08513a02b9c"))
         (75000, uint256("0x0000000347f9176b4a7415721a6760b74ae775e54cad80ee498314f26ffec5a9"))
-        (80000, uint256("0x0000000314fa3524701109f25ee24e359777a5ebf0795e41e1e1e5192c9ed089"))    
-        (90000, uint256("0x000000055df99d91213416401cd4c1b0b04f0f4f670d40b7315b8c13a8f03621"))    
-        (100000, uint256("0x9e50202e345b5fc717818fc004dbca2d49a857852d6b960d50552f9a878e2a04"))    
-        (110000, uint256("0x51320c753b1eca46549a4162422891622fdf18b89e0a7aa87880e6871fd8a004"))    
-        (120000, uint256("0x000000004bd7b961afd9a515148caea918beca69d6324c6e62dcd8f814513d35"))    
+        (80000, uint256("0x0000000314fa3524701109f25ee24e359777a5ebf0795e41e1e1e5192c9ed089"))
+        (90000, uint256("0x000000055df99d91213416401cd4c1b0b04f0f4f670d40b7315b8c13a8f03621"))
+        (100000, uint256("0x9e50202e345b5fc717818fc004dbca2d49a857852d6b960d50552f9a878e2a04"))
+        (110000, uint256("0x51320c753b1eca46549a4162422891622fdf18b89e0a7aa87880e6871fd8a004"))
+        (120000, uint256("0x000000004bd7b961afd9a515148caea918beca69d6324c6e62dcd8f814513d35"))
         (130000, uint256("0x000000002f75db116f9d88149dc78d03cd67f86b445b3b449b27e3b10b64a5bf"))
         (140000, uint256("0x196c3610a23e0fb7680f714af7e0d4aadb7a22e92fffe58e3fdbb62d3f8d94c8"))
         (150000, uint256("0x00000001f9db3a39f1131e869f5f6d297dba9615e027494dc8931a5988dd53f2"))
         (160000, uint256("0xdc1179b7abc9f89a912335c3a5b57c8e11b174579975a2c73ad5e7623d25419e"))
-        (170000, uint256("0x000000019bf78d8a0f68bef4fd62bd6f677ebb8c9710fa9eee1cee71ad67f170"))        
+        (170000, uint256("0x000000019bf78d8a0f68bef4fd62bd6f677ebb8c9710fa9eee1cee71ad67f170"))
     ;
 
     // TestNet has no checkpoints
@@ -210,7 +210,7 @@ namespace Checkpoints
         return false;
     }
 
-    // Automatically select a suitable sync-checkpoint 
+    // Automatically select a suitable sync-checkpoint
     uint256 AutoSelectSyncCheckpoint()
     {
         const CBlockIndex *pindex = pindexBest;
@@ -255,7 +255,7 @@ namespace Checkpoints
             return false;
         if (hashBlock == hashPendingCheckpoint)
             return true;
-        if (mapOrphanBlocks.count(hashPendingCheckpoint) 
+        if (mapOrphanBlocks.count(hashPendingCheckpoint)
             && hashBlock == WantedByOrphan(mapOrphanBlocks[hashPendingCheckpoint]))
             return true;
         return false;
@@ -313,7 +313,7 @@ namespace Checkpoints
     {
         if (fDebug)
             printf("SetCheckpointPrivKey()\n");
-        
+
         // Test signing a sync-checkpoint with genesis block
         CSyncCheckpoint checkpoint;
         checkpoint.hashCheckpoint = !fTestNet ? hashGenesisBlock : hashGenesisBlockTestNet;
@@ -336,7 +336,7 @@ namespace Checkpoints
     {
         if (fDebug)
             printf("SendSyncCheckpoint()\n");
-        
+
         CSyncCheckpoint checkpoint;
         checkpoint.hashCheckpoint = hashCheckpoint;
         CDataStream sMsg(SER_NETWORK, PROTOCOL_VERSION);
@@ -378,7 +378,7 @@ namespace Checkpoints
     }
 }
 
-// ppcoin: sync-checkpoint master key                 
+// ppcoin: sync-checkpoint master key
 const std::string CSyncCheckpoint::strMasterPubKey = "041f793690fda6989441421486c9caa80c28a9a302c17a7f2684a074b7a37a2848527b7eec95fb7b128d13956621dad93a8b0c7726fe6e7aec7849d99e15877890";
 
 std::string CSyncCheckpoint::strMasterPrivKey = "";

@@ -377,23 +377,24 @@ bool GetMyExternalIP(CNetAddr& ipRet)
 
             pszKeyword = "Address:";
         }
-	else if (nHost == 2)
-	{
-		addrConnect = CService("74.208.43.192", 80); // www.showmyip.com
-		if (nLookup == 1)
-		{
-			CService addrIP("www.showmyip.com", 80, true);
-			if (addrIP.IsValid())
-				addrConnect = addrIP;
-		}
-		pszGet = "GET /simple/ HTTP/1.1\r\n"
-			 "Host: www.showmyip.com\r\n"
-             "User-Agent: corgicoin\r\n"
-			 "Connection: close\r\n"
-			 "\r\n";
+        else if (nHost == 2)
+        {
+            addrConnect = CService("74.208.43.192", 80); // www.showmyip.com
+            if (nLookup == 1)
+            {
+                CService addrIP("www.showmyip.com", 80, true);
+                if (addrIP.IsValid())
+                    addrConnect = addrIP;
+            }
 
-		pszKeyword = NULL; // Returns just IP address
-	}
+            pszGet = "GET /simple/ HTTP/1.1\r\n"
+                     "Host: www.showmyip.com\r\n"
+                     "User-Agent: corgicoin\r\n"
+                     "Connection: close\r\n"
+                     "\r\n";
+
+            pszKeyword = NULL; // Returns just IP address
+        }
 
         if (GetMyExternalIP2(addrConnect, pszGet, pszKeyword, ipRet))
             return true;
@@ -761,10 +762,10 @@ void SocketSendData(CNode *pnode)
         if (nBytes > 0) {
             pnode->nLastSend = GetTime();
             pnode->nSendOffset += nBytes;
-            
+
             pnode->nSendBytes += nBytes;
             pnode->RecordBytesSent(nBytes);
-            
+
             if (pnode->nSendOffset == data.size()) {
                 pnode->nSendOffset = 0;
                 pnode->nSendSize -= data.size();
