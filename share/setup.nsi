@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 1.2.2
+!define VERSION 2.0.0.99
 !define COMPANY "CorgiCoin project"
 !define URL http://www.corgicoin.ru/
 
