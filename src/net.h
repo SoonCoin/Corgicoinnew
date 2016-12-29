@@ -53,7 +53,6 @@ enum
     LOCAL_IF,     // address a local interface listens on
     LOCAL_BIND,   // address explicit bound to
     LOCAL_UPNP,   // address reported by UPnP
-    LOCAL_IRC,    // address reported by IRC (deprecated)
     LOCAL_HTTP,   // address reported by whatismyip.com and similar
     LOCAL_MANUAL, // address explicitly specified (-externalip=)
 
@@ -130,7 +129,8 @@ extern std::deque<std::pair<int64_t, CInv> > vRelayExpiration;
 extern CCriticalSection cs_mapRelay;
 extern std::map<CInv, int64_t> mapAlreadyAskedFor;
 
-
+extern std::vector<std::string> vAddedNodes;
+extern CCriticalSection cs_vAddedNodes;
 
 
 class CNodeStats
@@ -208,16 +208,16 @@ public:
         nPeerId         = 0;
         fEnabled        = false;
     };
-    
+
     ~SecMsgNode() {};
-    
+
     int64_t                     lastSeen;
     int64_t                     lastMatched;
     int64_t                     ignoreUntil;
     uint32_t                    nWakeCounter;
     uint32_t                    nPeerId;
     bool                        fEnabled;
-    
+
 };
 
 /** Information about a peer */
@@ -239,10 +239,10 @@ public:
 
     int64_t nLastSend;
     int64_t nLastRecv;
-    
+
     uint64_t nSendBytes;
     uint64_t nRecvBytes;
-    
+
     int64_t nLastSendEmpty;
     int64_t nTimeConnected;
     CAddress addr;
@@ -353,7 +353,7 @@ public:
 private:
     CNode(const CNode&);
     void operator=(const CNode&);
-    
+
     // Network usage totals
     static CCriticalSection cs_totalBytesRecv;
     static CCriticalSection cs_totalBytesSent;
@@ -372,7 +372,7 @@ public:
     unsigned int GetTotalRecvSize()
     {
         unsigned int total = 0;
-        BOOST_FOREACH(const CNetMessage &msg, vRecvMsg) 
+        BOOST_FOREACH(const CNetMessage &msg, vRecvMsg)
             total += msg.vRecv.size() + 24;
         return total;
     }
@@ -746,7 +746,7 @@ public:
     static bool IsBanned(CNetAddr ip);
     bool Misbehaving(int howmuch); // 1 == a little, 100 == a lot
     void copyStats(CNodeStats &stats);
-    
+
     // Network stats
     static void RecordBytesRecv(uint64_t bytes);
     static void RecordBytesSent(uint64_t bytes);
