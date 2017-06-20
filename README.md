@@ -4,4 +4,4 @@ CorgiCoin Official Development Repo
 ### What is CorgiCoin?
 [CorgiCoin] (abbreviated CORG), 
 
-Scrypt POW/POS hybrid
+Scrypt Proof of Stake 2.0
