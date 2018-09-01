@@ -294,6 +294,9 @@ bool CTransaction::IsStandard() const
 {
     if (nVersion > CTransaction::CURRENT_VERSION)
         return false;
+    
+        if (!IsFinal())
+        return false;
 
     BOOST_FOREACH(const CTxIn& txin, vin)
     {
