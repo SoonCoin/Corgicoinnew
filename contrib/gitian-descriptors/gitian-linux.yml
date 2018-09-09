@@ -1,5 +1,5 @@
 ---
-name: "bitcoin-abc-0.18-linux"
+name: "corgicoin"
 enable_cache: true
 suites:
 - "xenial"
@@ -35,8 +35,8 @@ packages:
 - "libc6-dev:i386"
 - "libstdc++6:i386"
 remotes:
-- "url": "https://github.com/Bitcoin-ABC/bitcoin-abc.git"
-  "dir": "bitcoin"
+- "url": "https://github.com/vashshawn/CorgicoinV2.git"
+  "dir": "corgicoin"
 files: []
 script: |
 
